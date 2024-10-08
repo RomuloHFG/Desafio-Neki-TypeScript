@@ -30,7 +30,8 @@ Saúde Digital é uma aplicação que permite o cadastro de usuários e especial
 
 
 ### Tela de Cadastro
-![image](https://github.com/user-attachments/assets/44ed78ef-4dfe-4efe-a008-5439f359bd85)
+![image](https://github.com/user-attachments/assets/dd017972-fc85-4f6e-a278-449255082e6a)
+
 
 
 
