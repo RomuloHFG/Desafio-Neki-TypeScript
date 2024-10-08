@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# Saúde Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Saúde Digital é uma aplicação que permite o cadastro de usuários e especialistas da área de saúde, oferecendo uma interface intuitiva para gerenciar informações importantes de profissionais da saúde.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Cadastro de Usuários**: Os usuários podem se cadastrar informando suas informações pessoais e fazer login para acessar a plataforma.
+  
+- **Cadastro de Especialistas**: 
+  - Permite o cadastro de especialistas informando:
+    - Nome
+    - Foto
+    - Área de atuação
+    - Nível de atuação
+    - Endereço do local de trabalho
+    - Telefone
+  - Após o cadastro, os especialistas são exibidos em cards com todas as informações inseridas.
 
-## Expanding the ESLint configuration
+- **Edição e Exclusão**: É possível editar as informações dos cards cadastrados e excluí-los, se necessário.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Busca de Especialistas**: Os usuários podem pesquisar especialistas informando o nome do profissional.
 
-- Configure the top-level `parserOptions` property like this:
+- **Integração com Backend**: O projeto é integrado com um backend, garantindo que todos os cadastros e operações sejam salvos corretamente em um banco de dados.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Screenshots
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Tela de Login
+![image](https://github.com/user-attachments/assets/0ade4eb6-5293-4166-9532-a9fed4957adc)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+
+### Tela de Cadastro
+![image](https://github.com/user-attachments/assets/ac8c3d4c-adb7-4ac6-a8fd-be343873cad4)
+
+
+### Página Principal
+![image](https://github.com/user-attachments/assets/e75e44d9-8faa-491d-8d98-1750025b527f) 
+
+![image](https://github.com/user-attachments/assets/29b153d1-93be-4390-9cc5-467e04c7cd05)
+
