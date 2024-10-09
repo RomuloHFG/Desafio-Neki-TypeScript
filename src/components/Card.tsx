@@ -231,14 +231,14 @@ export default function RecipeReviewCard({
           </Typography>
         </CardContent>
         <CardActions disableSpacing style={{ background: '#9bd8ef' }}>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites"  style={{color:"black"}}>
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share"  style={{color:"black"}}>
             <ShareIcon />
           </IconButton>
           <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
-            <AddCircleOutlineIcon onClick={handleModalOpen} />
+            <AddCircleOutlineIcon onClick={handleModalOpen} style={{color:"black"}}/>
           </ExpandMore>
         </CardActions>
       </Card>

@@ -69,7 +69,6 @@ const SignUp: React.FC = () => {
         toast.success("Usuário cadastrado com sucesso");
       }
     } catch (error) {
-      //console.error("Erro:", error);
     }
   };
 

@@ -6,11 +6,14 @@ import ResponsiveGrid from '../components/Grid';
 import icon2 from '../assets/img/icons/icon2.gif';
 import logoff from '../assets/img/icons/logoff.png';
 import { toast } from 'react-toastify';
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
@@ -40,13 +43,17 @@ const App: React.FC = () => {
     navigate('/login');
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
+
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', background: darkMode ? '#1c1c1c' : '#fff' }}>
       <Layout>
         <Header
           style={{
             padding: 0,
-            background: 'linear-gradient(to right, #319fc9, #9bd8ef)',
+            background: darkMode ? '#333' : 'linear-gradient(to right, #319fc9, #9bd8ef)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -54,22 +61,45 @@ const App: React.FC = () => {
         >
           <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '16px' }}>
             <img src={icon2} alt="Icon" style={{ height: '45px' }} />
-            <h2 style={{ color: "white" }}>SaúdeDigital</h2>
+            <h2 style={{ color: darkMode ? 'white' : 'black' }}>SaúdeDigital</h2>
           </div>
-          <Button
-            type="text"
-            onClick={handleLogout}
-            style={{ marginRight: '25px' }}
-          >
-            <img src={logoff} alt="Logout" style={{ height: '30px' }} />
-          </Button>
+          <div style={{ display: 'flex', alignItems: 'center', paddingRight: '16px' }}>
+            <Button 
+              onClick={toggleDarkMode} 
+              style={{ 
+                backgroundColor: "transparent", 
+                border: "none", 
+                height: '40px', 
+                width: '40px', 
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginRight: '10px', 
+              }}
+            >
+              <SettingsBrightnessIcon style={{ height: '24px', width: '24px' }} />
+            </Button>
+            <Button
+              type="text"
+              onClick={handleLogout}
+              style={{ 
+                backgroundColor: "transparent", 
+                border: "none", 
+                height: '40px', 
+                width: '40px', 
+              }}
+            >
+              <ExitToAppIcon/>
+            </Button>
+          </div>
         </Header>
         <Content
           style={{
             margin: '24px 16px',
             padding: 24,
             borderRadius: borderRadiusLG,
-            background: '#fff',
+            background: darkMode ? '#1c1c1c' : '#fff',
+            color: darkMode ? 'white' : 'black',
           }}
         >
           <div style={{ textAlign: "center", fontSize: "30px", padding: 10 }}>
