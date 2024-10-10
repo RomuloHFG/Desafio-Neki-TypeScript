@@ -8,10 +8,14 @@ import logoff from '../assets/img/icons/logoff.png';
 import { toast } from 'react-toastify';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import GTranslateIcon from '@mui/icons-material/GTranslate';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n'; 
 
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const {
@@ -47,6 +51,11 @@ const App: React.FC = () => {
     setDarkMode((prev) => !prev);
   };
 
+  const toggleLanguage = () => {
+    const newLanguage = i18n.language.startsWith('pt') ? 'en' : 'pt';
+    i18n.changeLanguage(newLanguage);
+  };
+
   return (
     <Layout style={{ minHeight: '100vh', background: darkMode ? '#1c1c1c' : '#fff' }}>
       <Layout>
@@ -64,6 +73,20 @@ const App: React.FC = () => {
             <h2 style={{ color: darkMode ? 'white' : 'black' }}>SaúdeDigital</h2>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', paddingRight: '16px' }}>
+            <Button onClick={toggleLanguage} 
+              style={{ 
+                backgroundColor: "transparent", 
+                border: "none", 
+                height: '40px', 
+                width: '40px', 
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginRight: '10px', 
+              }}
+              >
+                <GTranslateIcon  style={{ height: '22px', width: '24px' }} />
+                </Button>
             <Button 
               onClick={toggleDarkMode} 
               style={{ 
@@ -104,12 +127,12 @@ const App: React.FC = () => {
         >
           <div style={{ textAlign: "center", fontSize: "30px", padding: 10 }}>
             <p>
-              Bem-vindo ao <strong style={{ color: "#319fc9" }}>SaúdeDigital</strong>,
-              onde <strong style={{ color: "#319fc9" }}>tecnologia</strong> e <strong style={{ color: "#319fc9" }}>saúde </strong>
-              se unem para cuidar do seu <strong style={{ color: "#319fc9" }}>bem-estar</strong> com <strong style={{ color: "#319fc9" }}>
-              inovação</strong> e <strong style={{ color: "#319fc9" }}>praticidade</strong>.
+              {t("Bem-vindo ao ")} <strong style={{ color: "#319fc9" }}>{t("SaúdeDigital")}</strong>,
+              {t(" onde")} <strong style={{ color: "#319fc9" }}>{t("tecnologia")}</strong> {t("e")} <strong style={{ color: "#319fc9" }}>{t("saúde ")}</strong>
+              {t("se unem para cuidar do seu")} <strong style={{ color: "#319fc9" }}> {t("bem-estar")}</strong> {t("com")} <strong style={{ color: "#319fc9" }}>
+              {t("inovação")}</strong> {t("e")} <strong style={{ color: "#319fc9" }}>{t("praticidade")}</strong>.
             </p>
-            <p>Explore nossa rede de <strong style={{ color: "#319fc9" }}>especialistas</strong>!</p>
+            <p>{t("Explore nossa rede de")} <strong style={{ color: "#319fc9" }}>{t("especialistas")}</strong>!</p>
           </div>
           <ResponsiveGrid />
         </Content>

@@ -2,8 +2,11 @@ import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import { Facebook, Twitter, Instagram, LinkedIn, GitHub } from '@mui/icons-material';
 import icon2 from '../assets/img/icons/icon2.gif';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -29,7 +32,7 @@ const Footer: React.FC = () => {
 
       <Box sx={{ display: 'flex', gap: '15px' }}>
         <Link href="#" color="textSecondary" variant="body2" style={{ textDecoration: "none", fontSize: "15px" }}>
-          Política de privacidade
+          {t("Política de privacidade")}
         </Link>
       </Box>
 
@@ -52,7 +55,7 @@ const Footer: React.FC = () => {
       </Box>
 
       <Typography variant="body2" color="textSecondary" sx={{ marginLeft: '20px' }}>
-        © 2024 SaúdeDigital. Todos os direitos reservados.
+        © 2024 SaúdeDigital. {t("Todos os direitos reservados.")}
       </Typography>
     </Box>
   );

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Select, MenuItem, InputLabel } from '@mui/material';
 import { getLevelsofexpertise, getSpecialties } from '../services/authService';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
-// Definindo a interface para as props do componente
 interface CadastroButtonProps {
   onSave: (data: {
     name: string;
@@ -15,6 +16,7 @@ interface CadastroButtonProps {
 }
 
 const CadastroButton: React.FC<CadastroButtonProps> = ({ onSave }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [image, setImage] = useState<File | null>(null);
@@ -91,11 +93,11 @@ const CadastroButton: React.FC<CadastroButtonProps> = ({ onSave }) => {
           fontWeight: "bold"
         }}
       >
-        Cadastrar
+        {t("Cadastrar")}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle style={{ background: 'linear-gradient(to right, #319fc9, #9bd8ef,#319fc9)', fontWeight: "bold" }}>
-          Cadastrar
+        {t("Cadastrar")}
         </DialogTitle>
         <DialogContent>
           <TextField

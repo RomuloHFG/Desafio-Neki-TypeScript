@@ -20,6 +20,8 @@ import EditModal from './EditModal';
 import ConfirmDeleteDialog from './Delete';
 import { getPhoto, deleteProfessional, updateProfessional } from '../services/authService';
 import { toast } from 'react-toastify';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
 interface CardData {
   title: string;
@@ -62,6 +64,7 @@ export default function RecipeReviewCard({
   phone = 'Number of phone',
   id = 0,
 }: RecipeReviewCardProps) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -202,8 +205,8 @@ export default function RecipeReviewCard({
                 <MoreVertIcon />
               </IconButton>
               <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                <MenuItem onClick={handleEdit}>Editar</MenuItem>
-                <MenuItem onClick={handleDelete}>Deletar</MenuItem>
+                <MenuItem onClick={handleEdit}>{t("Editar")}</MenuItem>
+                <MenuItem onClick={handleDelete}>{t("Deletar")}</MenuItem>
               </Menu>
             </>
           }
@@ -221,13 +224,13 @@ export default function RecipeReviewCard({
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            <strong>Nível de Atuação:</strong> {cardData.description}
+            <strong>{t("Nível de Atuação")}:</strong> {cardData.description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Endereço:</strong> {cardData.address}
+            <strong>{t("Endereço")}:</strong> {cardData.address}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Telefone:</strong> {cardData.phone}
+            <strong>{t("Telefone")}:</strong> {cardData.phone}
           </Typography>
         </CardContent>
         <CardActions disableSpacing style={{ background: '#9bd8ef' }}>

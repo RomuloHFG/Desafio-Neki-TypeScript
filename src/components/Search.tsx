@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
 interface SearchBarProps {
   searchText: string;
@@ -6,10 +8,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchText, setSearchText }) => {
+  const { t } = useTranslation();
   return (
     <input
       type="text"
-      placeholder="Pesquisar..."
+      placeholder={t("Pesquisar...")}
       value={searchText}
       onChange={(e) => setSearchText(e.target.value)}
       style={{

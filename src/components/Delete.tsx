@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import {
   Dialog,
   DialogActions,
@@ -19,6 +20,8 @@ const ConfirmDeleteDialog: React.FC<ConfirmDeleteDialogProps> = ({
   handleClose,
   handleConfirm,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={open}
@@ -26,18 +29,18 @@ const ConfirmDeleteDialog: React.FC<ConfirmDeleteDialogProps> = ({
       aria-labelledby="confirm-delete-dialog-title"
       aria-describedby="confirm-delete-dialog-description"
     >
-      <DialogTitle id="confirm-delete-dialog-title">Confirmar Deleção</DialogTitle>
+      <DialogTitle id="confirm-delete-dialog-title">{t("Confirmar Deleção")}</DialogTitle>
       <DialogContent>
         <DialogContentText id="confirm-delete-dialog-description">
-          Você tem certeza que deseja deletar este card?
+          {t("Você tem certeza que deseja deletar este card?")}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Não
+          {t("Não")}
         </Button>
         <Button onClick={handleConfirm} color="primary" autoFocus>
-          Sim
+          {t("Sim")}
         </Button>
       </DialogActions>
     </Dialog>

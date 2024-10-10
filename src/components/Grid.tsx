@@ -5,7 +5,9 @@ import Carousel from './Carousel';
 import CadastroButton from './RegistrationButton';
 import SearchBar from './Search';
 import { getProfessionals, postPhoto, postProfessionals } from '../services/authService';
-import { Grid, Pagination } from '@mui/material'; 
+import { Grid, Pagination } from '@mui/material';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
 interface Professional {
   id: number;
@@ -18,10 +20,11 @@ interface Professional {
 }
 
 export default function ResponsiveGrid() {
+  const { t } = useTranslation();
   const [cards, setCards] = useState<Professional[]>([]);
   const [searchText, setSearchText] = useState<string>('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8); 
+  const [itemsPerPage] = useState(8);
 
   const handleSaveCard = async (data: any) => {
     console.log(data);
@@ -63,7 +66,7 @@ export default function ResponsiveGrid() {
     card.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  // Calcular os índices dos itens exibidos na página atual
+
   const indexOfLastCard = currentPage * itemsPerPage;
   const indexOfFirstCard = indexOfLastCard - itemsPerPage;
   const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
@@ -118,12 +121,12 @@ export default function ResponsiveGrid() {
         textAlign: "center"
       }}>
         <CadastroButton onSave={handleSaveCard} />
-        <div><h1>O que você está procurando?</h1></div>
+        <div><h1>{t("O que você está procurando?")}</h1></div>
         <SearchBar searchText={searchText} setSearchText={setSearchText} />
       </div>
 
       <div style={{ paddingTop: 20, color: '#319fc9' }}>
-        <h1>↓Profissionais especializados cadastrados↓</h1>
+        <h1>{t("↓Profissionais especializados cadastrados↓")}</h1>
       </div>
 
       <Grid
