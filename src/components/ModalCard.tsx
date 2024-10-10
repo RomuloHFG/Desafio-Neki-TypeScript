@@ -3,6 +3,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
+import { useTranslation } from "react-i18next";
+import i18n from '../components/i18n';
 
 const style = {
   position: 'absolute',
@@ -36,6 +38,7 @@ const InfoModal: React.FC<InfoModalProps> = ({
   address,
   phone,
 }) => {
+  const { t } = useTranslation();
   return (
     <Modal
       open={open}
@@ -60,13 +63,13 @@ const InfoModal: React.FC<InfoModalProps> = ({
           style={{ objectFit: 'contain' }}
         />
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <strong>Nível de Atuação:</strong> {description}
+          <strong>{t("Nível de Atuação")}:</strong> {description}
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <strong>Endereço:</strong> {address}
+          <strong>{t("Endereço")}:</strong> {address}
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          <strong>Telefone:</strong> {phone}
+          <strong>{t("Telefone")}:</strong> {phone}
         </Typography>
       </Box>
     </Modal>

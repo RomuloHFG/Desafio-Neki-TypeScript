@@ -25,7 +25,12 @@
         "Você tem certeza que deseja deletar este card?": "Você tem certeza que deseja deletar este card?",
         "Não": "Não",
         "Sim": "Sim",
-        "Política de privacidade":"Política de privacidade",
-        "Todos os direitos reservados.":"Todos os direitos reservados."
+        "Política de privacidade": "Política de privacidade",
+        "Todos os direitos reservados.": "Todos os direitos reservados.",
+        "Nome": "Nome",
+        "Área de Atuação": "Área de Atuação",
+        "Endereço do Local de Trabalho": "Endereço do Local de Trabalho",
+        "Cancelar": "Cancelar",
+        "Salvar": "Salvar"
     }
 }

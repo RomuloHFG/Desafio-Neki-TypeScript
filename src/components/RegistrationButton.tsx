@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Select, MenuItem, InputLabel } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Select, MenuItem, InputLabel, FormLabel, FormControl } from '@mui/material';
 import { getLevelsofexpertise, getSpecialties } from '../services/authService';
 import { useTranslation } from "react-i18next";
 import i18n from '../components/i18n';
@@ -97,24 +97,24 @@ const CadastroButton: React.FC<CadastroButtonProps> = ({ onSave }) => {
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle style={{ background: 'linear-gradient(to right, #319fc9, #9bd8ef,#319fc9)', fontWeight: "bold" }}>
-        {t("Cadastrar")}
+          {t("Cadastrar")}
         </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            label="Nome"
+            label={t("Nome")}
             fullWidth
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <input
+          <input 
             style={{ borderRadius: '5px', marginTop: '10px' }}
             type="file"
             accept="image/*"
             onChange={(e) => setImage(e.target.files ? e.target.files[0] : null)}
           />
-          <InputLabel id="select-area-label" style={{ marginTop: '20px' }}>Área de Atuação</InputLabel>
+          <InputLabel id="select-area-label" style={{ marginTop: '20px' }}>{t("Área de Atuação")}</InputLabel>
           <Select
             labelId="select-area-label"
             id="select-area"
@@ -126,7 +126,7 @@ const CadastroButton: React.FC<CadastroButtonProps> = ({ onSave }) => {
               <MenuItem key={specialty.id} value={specialty.id}>{specialty.name}</MenuItem>
             ))}
           </Select>
-          <InputLabel id="select-level-label" style={{ marginTop: '20px' }}>Nível de Atuação</InputLabel>
+          <InputLabel id="select-level-label" style={{ marginTop: '20px' }}>{t("Nível de Atuação")}</InputLabel>
           <Select
             labelId="select-level-label"
             id="select-level"
@@ -138,24 +138,27 @@ const CadastroButton: React.FC<CadastroButtonProps> = ({ onSave }) => {
               <MenuItem key={expertise.id} value={expertise.id}>{expertise.name}</MenuItem>
             ))}
           </Select>
-          <TextField
-            margin="dense"
-            label="Endereço do Local de Trabalho"
-            fullWidth
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <TextField
-            margin="dense"
-            label="Telefone"
-            fullWidth
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
+          <FormControl fullWidth margin="dense">
+  <FormLabel>{t("Endereço do Local de Trabalho")}</FormLabel>
+  <TextField 
+    label={t("Endereço")}
+    value={address}
+    onChange={(e) => setAddress(e.target.value)}
+  />
+</FormControl>
+
+<FormControl fullWidth margin="dense">
+  <FormLabel>{t("Telefone")}</FormLabel>
+  <TextField
+    label={t("Telefone")}
+    value={phone}
+    onChange={(e) => setPhone(e.target.value)}
+  />
+</FormControl>
         </DialogContent>
         <DialogActions style={{ background: 'linear-gradient(to right, #319fc9, #9bd8ef,#319fc9)' }}>
-          <Button onClick={handleClose} style={{ color: "black", fontWeight: "bold" }}>Cancelar</Button>
-          <Button onClick={handleSave} style={{ color: "black", fontWeight: "bold" }}>Salvar</Button>
+          <Button onClick={handleClose} style={{ color: "black", fontWeight: "bold" }}>{t("Cancelar")}</Button>
+          <Button onClick={handleSave} style={{ color: "black", fontWeight: "bold" }}>{t("Salvar")}</Button>
         </DialogActions>
       </Dialog>
     </div>
